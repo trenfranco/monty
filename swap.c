@@ -15,16 +15,18 @@ void _swap(stack_t **stack, unsigned int line_number)
 	a = *stack;
 	if (*stack != NULL && (*stack)->next != NULL)
 	{
-	b = a->next;
-	c = a->next->next;
+		b = a->next;
 
-	if (c)
-		c->prev = *stack;
-	b->prev = NULL;
-	a->prev = a->next;
-	a->next = b->next;
-	b->next = *stack;
-	*stack = b;
+		if (c)
+		{
+			c = a->next->next;
+			c->prev = *stack;
+		}
+		b->prev = NULL;
+		a->prev = a->next;
+		a->next = b->next;
+		b->next = *stack;
+		*stack = b;
 	}
 	else
 	{
