@@ -11,22 +11,21 @@ int global;
 
 void _swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
+	stack_t *a, *b, *c;
 
-	temp = *stack;
+	a = *stack;
+	b = a->next;
+	c = a->next->next;
 	if (temp->next == NULL || !stack || !(*stack))
 	{
 		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short", line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	temp->prev = temp->next->next->prev;
-	temp->next->next->prev = *stack;
-	temp->next = temp->next->next;
-	temp->next->next = *stack;
-	temp->next->prev = NULL;
-	*stack = temp->next;
-
-
+	c->prev = *stack;
+	b->prev = NULL;
+	a->prev = a->next;
+	a->next = b->next;
+	b->next = *stack;
+	*stack = b;
 
 }
