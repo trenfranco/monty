@@ -17,7 +17,7 @@ void _pstr(stack_t **stack, unsigned int line_number)
 	{
 		while (temp)
 		{
-			if (temp->n <= 0 && temp->n > 127)
+			if ((temp->n <= 0 && temp->n > 127) || temp->n == 0)
 			{
 				break;
 			}
