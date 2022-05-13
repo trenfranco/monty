@@ -21,6 +21,7 @@ typedef struct global_s
 	int n;
 	FILE *fd;
 	char *buffer;
+	char mode;
 } global_t;
 extern global_t gl;
 
@@ -71,7 +72,10 @@ void _div(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
 void _pchar(stack_t **stack, unsigned int line_number);
+void _rotl(stack_t **stack, unsigned int line_number);
+void _rotr(stack_t **stack, unsigned int line_number);
 void _pstr(stack_t **stack, unsigned int line_number);
+stack_t *add_dnodeint_end(stack_t **head, int n);
 void add_nodo(stack_t **stack, int a);
 void erroargv(void);
 void errounk(unsigned int line, char *aux);

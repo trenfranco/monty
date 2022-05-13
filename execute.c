@@ -1,4 +1,5 @@
 #include "monty.h"
+global_t gl;
 /**
  * execute - execute function that belongs to a opcode
  * @aux: opcode
@@ -21,7 +22,11 @@ int execute(char *aux, stack_t **stack, unsigned int line)
 		{"mul", _mul},
 		{"mod", _mod},
 		{"pchar", _pchar},
+		{"rotl", _rotl},
+		{"rotr", _rotr},
 		{"pstr", _pstr},
+		{"stack", NULL},
+		{"queue", NULL},
 		{NULL, NULL}
 	};
 
@@ -29,7 +34,17 @@ int execute(char *aux, stack_t **stack, unsigned int line)
 	{
 		if (strcmp(aux, ins[i].opcode) == 0)
 		{
-			ins[i].f(stack, line);
+			if (strcmp(aux, "stack") == 0 || strcmp(aux, "queue") == 0)
+			{
+				if(strcmp(aux, "stack"))
+					gl.mode = 's';
+				if(strcmp(aux, "queue"))
+					gl.mode = 'q';
+			}
+			else
+			{
+				ins[i].f(stack, line);
+			}
 			break;
 		}
 		i++;

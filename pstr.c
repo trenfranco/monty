@@ -6,7 +6,6 @@
  * @line_number: line num
  * Return: void
  */
-
 void _pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
@@ -27,6 +26,5 @@ void _pstr(stack_t **stack, unsigned int line_number)
 		printf("\n");
 	}
 	else
-		printf("\n");
-
+	printf("\n");
 }
